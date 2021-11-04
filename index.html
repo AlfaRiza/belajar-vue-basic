@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js basic</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <img src="FB6M67lVQAEaE9w.jfif" alt="" width="80px">
+            <h1 v-once>{{ getName() }}</h1>
+            <!-- ternary operation -->
+            <button>{{ isActive ? 'Success' : 'Failed' }}</button>
+            <p>{{ message }}</p>
+            <p>{{ total }}</p>
+            <h4>{{ bilangan }}</h4>
+            <p>Merupakan bilangan {{ ganjilGenap }}</p>
+        </header>
+
+        <footer id="footer">
+            <p>Footer copyright @2021</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        const data = {
+                name: 'Belajar Vue js untuk pemula',
+                message: 'Menambahkan kemampuan untuk mencari file yang terdapat di dalam dependency pada folder node_modules, melalui Command Palette VS Code.',
+                isActive: true,
+                qty: 3,
+                bilangan : 4,
+            }
+        const vm = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                getName: function(){
+                    return this.name.toUpperCase()
+                },
+                changeLow: function(){
+                    return this.name.toLowerCase()
+                }
+            },
+            computed:{
+                total: function () {
+                    return this.qty * 2000
+                },
+                ganjilGenap: function () {
+                    if (this.bilangan%2 == 0) {
+                        return 'genap'
+                    } else {
+                        return 'ganjil'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
